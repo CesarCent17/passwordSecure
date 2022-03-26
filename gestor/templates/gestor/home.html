@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if messages %}
+        {% for menssage in messages %}
+            <div>{{ menssage }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <a href="{% url 'logout' %}">Cerrar Sesion</a>
+    {% for contrasena in contrasenas %}
+        <p>{{ contrasena }}</p>
+    {% endfor %}
+
+</body>
+</html>
