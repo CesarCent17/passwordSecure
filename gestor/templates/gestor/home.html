@@ -1,8 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
 </head>
 <body>
     {% if messages %}
@@ -13,8 +15,20 @@
 
     <a href="{% url 'logout' %}">Cerrar Sesion</a>
     {% for contrasena in contrasenas %}
-        <p>{{ contrasena }}</p>
+        <div>
+            <p>{{ contrasena }}</p>
+            <a href="{% url 'edicioncontrasena' contrasena.id %}">Editar {{ contrasena.plataforma }}</a>
+            <a href="{% url 'eliminarcontrasena' contrasena.id %}" class="BtnEliminar">Eliminar</a>
+
+        </div>
+
     {% endfor %}
 
+    <form class="form" method="post" action="{% url 'nuevacontrasena' %}"> {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" id="submit">Agregar</button>
+    </form>
+
+    <script src="{% static 'gestor/js/gestorContrasenas.js' %}"></script>
 </body>
 </html>

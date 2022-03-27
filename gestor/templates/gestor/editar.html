@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="{% url 'editarcontrasena' obj_passw.id %}" method="post">{% csrf_token %}
+        <label for="plataforma">Plataforma:</label>
+        <input type="text" id="plataforma" name="plataforma" value="{{ obj_passw.plataforma }}" readonly required>
+
+        <label for="contrasena">Contrasena:</label>
+        <input type="text" id="contrasena" name="contrasena" value="{{ obj_passw.passw }}" required>
+
+        <input type="submit" value="Guardar">
+    </form>
+</body>
+</html>

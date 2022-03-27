@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Contrasena
 
 class RegistroUsuario(UserCreationForm):
     username = forms.CharField(label='Usuario')
@@ -13,5 +14,11 @@ class RegistroUsuario(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
         help_texts = {label:"" for label in fields}
 
-class Formu(forms.ModelForm):
-    nombre = forms.CharField()
+class RegistroContrasena(forms.ModelForm):
+    plataforma = forms.CharField(label='Plataforma')
+    passw = forms.CharField(label='Contrasena', widget=forms.PasswordInput)
+
+    class Meta:
+        model = Contrasena
+        fields = ['plataforma', 'passw']
+
